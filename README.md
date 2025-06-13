@@ -1,70 +1,54 @@
-📚 Projet : "REACT - Book Manager"
+# React + TypeScript + Vite
 
-Une petite app qui permet :
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-    D’afficher une liste de livres
+Currently, two official plugins are available:
 
-    D'ajouter un nouveau livre (titre + auteur)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-    De supprimer un livre
+## Expanding the ESLint configuration
 
-    D’éditer un livre
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-    (optionnel) de stocker les données dans le localStorage pour les retrouver au reload
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-📦 Stack recommandée
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-    React (évidemment 😄)
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-    Vite pour créer le projet rapidement (npm create vite@latest)
-
-    React Router pour la navigation (npm install react-router-dom)
-
-    TailwindCSS si tu veux un peu de style rapide (npm install -D tailwindcss)
-
-🛠️ Arborescence basique
-
-/src
-  /components
-    BookList.tsx
-    BookItem.tsx
-    BookForm.tsx
-  /pages
-    Home.tsx
-    AddBook.tsx
-    EditBook.tsx
-  /context
-    BookContext.tsx
-  App.tsx
-  main.tsx
-
-🚀 Étapes de dev
-
-    Setup du projet (Vite + React + TS)
-
-    Créer un BookContext pour stocker les livres
-
-    Créer BookList → liste les livres
-
-    Créer BookForm → formulaire d’ajout/édition
-
-    Configurer React Router → Home (liste), Add, Edit
-
-    Gérer le localStorage (useEffect pour persist la liste)
-
-    Ajouter un peu de style
-
-👉 Ce que tu vas apprendre concrètement
-
-    Structurer ton app avec composants fonctionnels
-
-    Gérer le state proprement (lifting + context)
-
-    Naviguer entre pages avec Router
-
-    Utiliser des hooks React (useState, useEffect, useContext)
-
-    Manipuler les événements (onClick, onChange, etc.)
-
-    Appeler une API (simulée via localStorage ou fetch)
-
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
