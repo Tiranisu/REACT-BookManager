@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# 📅 React Todo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projet d'apprentissage React + TypeScript + Vite
 
-Currently, two official plugins are available:
+## 📈 Objectifs du projet
+Construire une application Todo List moderne pour pratiquer :
+- React 18 avec TypeScript 
+- Gestion d'état avec useState 
+- Effets de bord avec useEffect 
+- Persistance des données en localStorage 
+- Structure de projet modulaire (components)
+- Gestion du routing simple (optionnel)
+- Mise en place d'un workflow Git pro
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Stack technique 
+- React 18+ 
+- TypeScript 
+- Vite (outil de build rapide)
+- TailwindCSS (facultatif, pour styliser rapidement)
+- React Router (optionnel, pour routing)
 
-## Expanding the ESLint configuration
+## 📖 Fonctionnalités
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### MVP (version de base)
+- Ajouter une tâche 
+- Supprimer une tâche 
+- Marquer une tâche comme complétée 
+- Filtrer les tâches (All / Active / Completed)
+- Persister les tâches dans localStorage
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Bonus possibles 
+- Animations CSS
+- Recherche par mot-clé 
+- Date de création de la tâche 
+- Thème clair / sombre
+
+## 🔄 Installation et démarrage local
+
+### Clone du projet
+```aiignore
+git clone <url-du-repo>
+cd my-todo-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Installation des dépendances
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```aiignore
+npm install
 ```
+
+### Démarrage en mode dev
+
+```aiignore
+npm run dev
+```
+Accéder ensuite à http://localhost:5173
+
+## 📁 Structure du projet
+```aiignore
+src/
+├── components/          # Composants réutilisables (TodoItem, TodoList, TodoForm)
+├── App.tsx              # Composant racine de l'application
+├── main.tsx             # Point d'entrée de l'application
+└── index.css            # Styles globaux (inclut TailwindCSS si utilisé)
+```
+
