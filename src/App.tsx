@@ -1,35 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useEffect, useState} from 'react'
+// import Header from "./components/Header.tsx";
+// import List from './components/List.tsx';
+import Book from "./components/Book.tsx";
+import type {BookType} from "./types/Book.ts";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+    const [books, addBooks] = useState<BookType[]>([])
+
+    useEffect(() => {
+        addBooks([{ id: Date.now(), name: "Nouveau livre", author: "Moi", year: 2024, read: false }])
+    }, [books]);
+
+    return (
+     <div>
+         <span>Ahhhh</span>
+         {books[0] && <Book book={books[0]} />}
+     </div>
+    )
 }
-
-export default App
